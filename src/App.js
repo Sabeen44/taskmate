@@ -1,15 +1,10 @@
-
-import Header from './components/Header'
-import ShowTask from './components/ShowTask'
-import AddTask from './components/AddTask'
-
-import './App.css';
-
 import { useState, useEffect } from 'react';
+import './App.css';
+import Header from './components/Header';
+import AddTask from './components/AddTask';
+import ShowTask from './components/ShowTask';
 
-
-
-export default function App() {
+function App() {
   const [task, setTask] = useState("");
   const [tasklist, setTasklist] = useState(JSON.parse(localStorage.getItem('tasklist')) || []);
   const [editid, setEditid] = useState(0);
@@ -47,18 +42,25 @@ export default function App() {
     setTasklist(updatedTasklist);
   }
 
+  useEffect(() => {
+    localStorage.setItem('tasklist', JSON.stringify(tasklist));
+  }, [tasklist]);
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }, [theme]);
+
   return (
-    <div className={'App'+theme}>
-       <div className="container"></div>
+    <div className={"App " + theme}>
+      <div className="container">
         <Header setTheme={setTheme} theme={theme}>
-          Taskmate
+          taskMate
         </Header>
         <AddTask handleSubmit={handleSubmit} editid={editid} task={task} setTask={setTask}/>
         <ShowTask tasklist={tasklist} setTasklist={setTasklist} handleEdit={handleEdit} handleDelete={handleDelete}/>
       </div>
-      
-    
+    </div>
   );
 }
 
-
+export default App
