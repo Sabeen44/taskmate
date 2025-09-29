@@ -10,6 +10,9 @@ import { useState, useEffect } from 'react';
 
 
 export default function App() {
+  const [task, setTask] = useState("");
+  const [tasklist, setTasklist] = useState(JSON.parse(localStorage.getItem('tasklist')) || []);
+  const [editid, setEditid] = useState(0);
   const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('theme')) || "medium");
 
   return (
