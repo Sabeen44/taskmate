@@ -1,4 +1,4 @@
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo-for-taskmate.png";
 
 const Header = ({children, theme, setTheme}) => {
     return (
@@ -18,4 +18,7 @@ const Header = ({children, theme, setTheme}) => {
         </header>
     )
 }
+
+
+export default Header;
 
